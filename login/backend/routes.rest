@@ -1,0 +1,54 @@
+GET http://localhost:3001/user
+
+###
+
+POST http://localhost:3001/user
+Content-Type: application/json
+
+{
+  "email": "jackrmcclure@gmail.com",
+  "password": "password"
+}
+
+### 
+GET http://localhost:3001/jwt
+
+###
+
+POST http://localhost:3001/jwt
+Content-Type: application/json
+
+{
+  "jti": "5a7e75f7-7519-48ff-b2dd-1b9b89ad14fa",
+  "user_id" : "6892a9134b1684e846802175"
+}
+
+###
+
+DELETE http://localhost:3001/jwt/revoke-jwt
+Content-Type: application/json
+
+{
+  "user_id": "689ba806a5d1648d55ae3a2e"
+}
+
+###
+
+POST http://localhost:3001/jwt/refresh
+Content-Type: application/json
+Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjg5YmE4MDZhNWQxNjQ4ZDU1YWUzYTJlIiwianRpIjoiYWZkNDY5N2ItYzVlOS00NjY3LThmNDgtMDUxODhlNGVmYjJiIiwiaWF0IjoxNzU1MzY2NDc2LCJleHAiOjE3NTU5NzEyNzZ9.NWImGQaR1yvF8SXNrheJwQbT_Tz5wYAfpacLlpxQqjs;
+
+{
+    "user_id": "689ba806a5d1648d55ae3a2e"
+}
+
+###
+
+POST http://localhost:3001/jwt
+Content-Type: application/json
+Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjg5YmE4MDZhNWQxNjQ4ZDU1YWUzYTJlIiwianRpIjoiM2MzMzAwNmEtY2M3ZS00ZmQyLWIxZGUtOWM4Yzk5YzQxZjE2IiwiaWF0IjoxNzU2MDY5NjcwLCJleHAiOjE3NTY2NzQ0NzB9.eTxnKi50NaiQ1t4IyLOPmvJnA9W3WR5lOLgDJlKgxbM;
+
+{
+  "jti": "f3c33006a-cc7e-4fd2-b1de-9c8c99c41f16"
+}
+

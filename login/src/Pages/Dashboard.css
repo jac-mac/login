@@ -1,0 +1,28 @@
+.dashboard {
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  background-color: #282c34;
+  color: lightgrey;
+}
+
+.dashboard button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.5rem;
+  padding: 0.5em 1em 0.5em 1em;
+  flex-grow: 1;
+  font-weight: bold;
+  background-color: #07A0C3;
+  color: white;
+  border-radius: 8px;
+  border: transparent;
+  outline: none;
+  margin-bottom: 0.5em;
+}
+
+.dashboard button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
