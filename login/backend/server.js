@@ -14,9 +14,10 @@ db.once('open', () => console.log('Connected to MongoDB'))
 const app = express()
 
 
-const userRoute = require('./Routes/UserRoute')
-const jwtsRoute = require('./Routes/JWTSRoute')
-const { ref } = require('process')
+const userRoute    = require('./Routes/UserRoute')
+const jwtsRoute    = require('./Routes/JWTSRoute')
+const messageRoute = require('./Routes/MessageRoute')
+const conversationRoute = require('./Routes/ConversationRoute')
 
 app.use(cors({
   origin: "http://localhost:3000",
@@ -26,6 +27,8 @@ app.use(express.json())
 app.use(cookieParser())
 app.use('/user', userRoute)
 app.use('/jwt', jwtsRoute)
+app.use('/message', messageRoute)
+app.use('/conversation', conversationRoute)
 
 const checkAuthAndRedirect = (req, res, next) => {
   // const refreshToken = req.cookies.refreshToken

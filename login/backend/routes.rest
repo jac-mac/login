@@ -52,3 +52,47 @@ Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjg5Ym
   "jti": "f3c33006a-cc7e-4fd2-b1de-9c8c99c41f16"
 }
 
+###
+GET http://localhost:3001/message
+
+###
+
+POST http://localhost:3001/message/new
+Content-Type: application/json
+
+{
+  "sender": "6892a9134b1684e846802175",
+  "receiver": "689ba806a5d1648d55ae3a2e",
+  "content": "This is a test message."
+}
+
+###
+
+GET http://localhost:3001/message/68b3c99935084fe5905ceb78
+
+###
+
+GET http://localhost:3001/conversation
+
+###
+
+POST http://localhost:3001/conversation
+Content-Type: application/json
+
+{
+  "participants": ["6892a9134b1684e846802175", "689ba806a5d1648d55ae3a2e"]
+}
+
+###
+
+GET http://localhost:3001/conversation/68b3cef25c9fe921d4efe4ff
+
+###
+
+PATCH http://localhost:3001/conversation/new-message
+Content-Type: application/json
+
+{
+  "messageId": "68b3c99935084fe5905ceb78",
+  "participants": ["6892a9134b1684e846802175"]
+}
