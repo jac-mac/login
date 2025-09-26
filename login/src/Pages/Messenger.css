@@ -1,0 +1,75 @@
+.messages {
+  width: 100vw;
+  height: 100vh;
+  color: lightgray;
+  background-color: #282c34;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.messenger {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid white;
+  height: 60%;
+  min-height: 60%;
+  min-width: 60%;
+}
+
+.friends-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+  font-size: 1.5rem;
+  width: 20%;
+  height: 100%;
+}
+
+.friends-list li {
+  padding: 0.5em;
+  text-align: center;
+}
+
+.friends-list li:hover {
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.message-submission {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 0;
+  height: 15%;
+  width: inherit;
+  border: 1px solid blue;
+}
+
+.message-submission > input {
+  font-size: 1.5rem;
+  width: 70%;
+}
+
+.message-submission > button {
+  font-size: 1.5rem;
+  width: 20%;
+}
+
+.chat-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-box {
+  display: flex;
+  overflow: scroll;
+  border: 1px solid green;
+  height: 85%;
+  width: inherit;
+}

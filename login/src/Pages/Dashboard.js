@@ -2,6 +2,7 @@ import React from 'react'
 import './Dashboard.css'
 import { useUserContext } from '../Contexts/UserContext'
 import { useNavigate } from 'react-router-dom'
+import NavBar from '../Components/NavBar/NavBar'
 export default function Dashboard() {
   const { userData } = useUserContext()
   const navigate = useNavigate()
@@ -23,7 +24,7 @@ export default function Dashboard() {
 
   return (
     <div className='dashboard'>
-      <button name='logout' type='submit' onClick={handleLogout}>Logout</button>
+      <NavBar handleLogout={handleLogout}/>
     </div>
   )
 }

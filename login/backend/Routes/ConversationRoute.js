@@ -1,9 +1,12 @@
-const express = require('express')
-const router = express.Router()
-const Conversation = require('../Schema/ConversationSchema')
+import express from 'express'
+import Conversation from '../Schema/ConversationSchema.js'
+import {ObjectId} from 'mongodb'
+import { conversationCheck, conversationMessages } from '../middlewares/ConversationMiddlewares.js'
+import { tokenValidation, tokenLookup } from '../middlewares/JWTMiddlewares.js'
+const conversationRouter = express.Router()
 
 //get all
-router.get('/', async (req, res) => { 
+conversationRouter.get('/', async (req, res) => { 
   try {
     const conversations = await Conversation.find()
     if(conversations.length === 0) {
@@ -24,7 +27,7 @@ router.get('/', async (req, res) => {
 })
 
 //get conversation by id
-router.get('/:id', async (req, res) => {
+conversationRouter.get('/:id', async (req, res) => {
   const id = req.params.id
   try {
     const conversation = await Conversation.findOne({_id: id})
@@ -47,7 +50,7 @@ router.get('/:id', async (req, res) => {
 })
 
 //start new conversation
-router.post('/', async (req, res) => {
+conversationRouter.post('/', async (req, res) => {
   const participants = req.body.participants
   if(!participants) {
     return res.status(400).json({
@@ -71,7 +74,7 @@ router.post('/', async (req, res) => {
 })
 
 //add new message id to message array
-router.patch('/new-message', async (req, res) => {
+conversationRouter.patch('/new-message', async (req, res) => {
   //object
   const messageId = req.body.messageId
   const participants = req.body.participants
@@ -107,4 +110,12 @@ router.patch('/new-message', async (req, res) => {
 
 })
 
-module.exports = router
+conversationRouter.get('/user/:id', tokenValidation, tokenLookup, conversationCheck, conversationMessages, async (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: `Successfully returned conversation with id: ${req.conversation._id}`,
+    data: req.messages
+  })
+})
+
+export {conversationRouter}

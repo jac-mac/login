@@ -6,7 +6,7 @@
   color: lightgrey;
 }
 
-.dashboard button {
+/* .dashboard button {
   position: absolute;
   top: 0;
   right: 0;
@@ -25,4 +25,4 @@
 .dashboard button:hover {
   cursor: pointer;
   opacity: 0.8;
-}
+} */

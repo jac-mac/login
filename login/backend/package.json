@@ -1,9 +1,10 @@
 {
   "name": "backend",
+  "type": "module",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon --require dotenv/config server.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.19.0",
     "mongoose": "^8.17.0",
     "nodemon": "^3.1.10"
   }

@@ -1,0 +1,21 @@
+.friends-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+  font-size: 1.5rem;
+  width: 20%;
+  height: 100%;
+}
+
+.friends-list li {
+  padding: 0.5em;
+  text-align: center;
+}
+
+.friends-list li:hover {
+  cursor: pointer;
+  opacity: 0.85;
+}

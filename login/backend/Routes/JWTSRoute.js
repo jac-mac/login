@@ -1,12 +1,12 @@
-const express = require('express')
-const cors = require('cors')
-const { createAndStoreRefreshToken } = require('../helpers/tokenService')
-const jwt = require('jsonwebtoken')
-const router = express.Router()
-const JWT = require('../Schema/JWTSchema')
+import express from 'express'
+import cors from 'cors'
+import { createAndStoreRefreshToken } from '../helpers/tokenService.js'
+import jwt from 'jsonwebtoken'
+import JWT from '../Schema/JWTSchema.js'
+const jwtsRouter = express.Router()
 const KEY = process.env.SECRET_KEY
 
-router.use(cors({origin: 'http://localhost:3000'}))
+jwtsRouter.use(cors({origin: 'http://localhost:3000'}))
 
 const decodeToken = async (req, res, next) => {
   const jti = req.body.jti
@@ -23,7 +23,7 @@ const decodeToken = async (req, res, next) => {
   }
 }
 
-router.get('/', decodeToken, async (req, res) => {
+jwtsRouter.get('/', decodeToken, async (req, res) => {
   const jti = req.body.jti
   try {
     const token = await JWT.findOne({jti: jti})
@@ -36,12 +36,12 @@ router.get('/', decodeToken, async (req, res) => {
 
 })
 
-router.post('/', decodeToken, async (req, res) => {
+jwtsRouter.post('/', decodeToken, async (req, res) => {
   console.log(req.jwtData)
 })
 
 //updates refresh token
-router.post('/refresh', async (req, res) => { //use protected middleware
+jwtsRouter.post('/refresh', async (req, res) => { //use protected middleware
   const oldRefreshToken = req.cookies.refreshToken
   const user_id = req.body.user_id
   try {
@@ -71,7 +71,7 @@ router.post('/refresh', async (req, res) => { //use protected middleware
 })
 
 //logout
-router.delete('/revoke', async (req, res) => { //use protected middleware
+jwtsRouter.delete('/revoke', async (req, res) => { //use protected middleware
   const refreshToken = req.cookies.refreshToken
   if(!refreshToken) {
     return res.status(401).json({message: 'Refresh token not included in request body.'})
@@ -97,4 +97,4 @@ router.delete('/revoke', async (req, res) => { //use protected middleware
 
 
 
-module.exports = router
+export {jwtsRouter}

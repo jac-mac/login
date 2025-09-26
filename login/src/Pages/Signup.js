@@ -68,40 +68,45 @@ export default function Signup() {
         <section className='signup-form-group'>
             <input
               required
-              name="signup-first-name"
+              name="firstName"
               type="firstname"
               placeholder="First Name"
+              value={formData.firstName}
               onChange={handleFormDataChange}
             />
             <input
               required
-              name="signup-last-name"
+              name="lastName"
               type="lastname"
               placeholder="Last Name"
+              value={formData.lastName}
               onChange={handleFormDataChange}
             />
           </section>
           <input
             required
-            name="signup-email"
+            name="email"
             type="text"
             placeholder="Email..."
+            value={formData.email}
             onChange={handleFormDataChange}
           /> 
         {/* ^^ lookup 3rd party email verifiers ^^ */}
         <section className='signup-form-grouping'>
           <input
             required
-            name="signup-password"
+            name="password"
             type="password"
             placeholder="Password..."
+            value={formData.password}
             onChange={handleFormDataChange}
           />
           <input
             required
-            name="signup-confirmed-password"
+            name="confirmedPassword"
             type="password"
             placeholder="Confirm Password..."
+            value={formData.confirmedPassword}
             onChange={handleFormDataChange}
           />
         </section>

@@ -1,10 +1,12 @@
-const express = require('express')
-const cookieParser = require('cookie-parser')
-const jwt = require('jsonwebtoken')
-const cors = require('cors')
-const mongoose = require('mongoose')
-const crypto = require('crypto')
-require('dotenv').config()
+import express from 'express'
+import cookieParser from 'cookie-parser'
+import jwt from 'jsonwebtoken'
+import cors from 'cors'
+import mongoose from 'mongoose'
+import crypto from 'crypto'
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 const PORT = process.env.PORT
 const CONNECTION_STRING = process.env.DB_CONNECTION_STRING
 const KEY = process.env.SECRET_KEY
@@ -14,10 +16,10 @@ db.once('open', () => console.log('Connected to MongoDB'))
 const app = express()
 
 
-const userRoute    = require('./Routes/UserRoute')
-const jwtsRoute    = require('./Routes/JWTSRoute')
-const messageRoute = require('./Routes/MessageRoute')
-const conversationRoute = require('./Routes/ConversationRoute')
+import {userRouter}         from './Routes/UserRoute.js'
+import {jwtsRouter}         from './Routes/JWTSRoute.js'
+import {messageRouter}      from './Routes/MessageRoute.js'
+import {conversationRouter} from './Routes/ConversationRoute.js'
 
 app.use(cors({
   origin: "http://localhost:3000",
@@ -25,10 +27,10 @@ app.use(cors({
 }))
 app.use(express.json())
 app.use(cookieParser())
-app.use('/user', userRoute)
-app.use('/jwt', jwtsRoute)
-app.use('/message', messageRoute)
-app.use('/conversation', conversationRoute)
+app.use('/user', userRouter)
+app.use('/jwt', jwtsRouter)
+app.use('/message', messageRouter)
+app.use('/conversation', conversationRouter)
 
 const checkAuthAndRedirect = (req, res, next) => {
   // const refreshToken = req.cookies.refreshToken

@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import Login from '../Pages/Login'
 import Dashboard from '../Pages/Dashboard'
 import Signup from '../Pages/Signup'
+import Messenger from './Messenger'
 import { UserProvider } from '../Contexts/UserContext'
-import { useNavigate, Routes, Route } from 'react-router-dom'
+import { useNavigate, Routes, Route, useLocation } from 'react-router-dom'
 // import { useUserContext } from '../Contexts/UserContext'
 
 export default function AuthDispatch({ children }) {
   // const { setUser } = useUserContext()
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const navigate = useNavigate();
+  const location = useLocation()
   useEffect(() => {
     const checkAuth = async () => {
       try {
@@ -17,19 +20,35 @@ export default function AuthDispatch({ children }) {
           credentials: "include",
         });
         if (response.ok) {
-          setLoading(true)
-          navigate("/dashboard");
+          setIsAuthenticated(true)
+          setIsLoading(true)
+          // setLoading(true)
+          // navigate("/dashboard");
+        }
+        else {
+          setIsAuthenticated(false)
         }
       } catch (error) {
         console.error({ message: "Could not access db" });
+        setIsAuthenticated(false)
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
     checkAuth();
-  }, [navigate]);
+  }, []);
 
-  if (loading) {
+  useEffect(() => {
+    if(!isLoading) {
+      const publicRoutes = ['/', '/login', '/signup']
+
+      if(isAuthenticated && publicRoutes.includes(location.pathname)) {
+        navigate('/dashboard')
+      }
+    }
+  }, [isAuthenticated, isLoading, location.pathname, navigate])
+
+  if (isLoading) {
     return <div style={{backgroundColor: '#282c34'}}></div>
   }
   return (
@@ -38,6 +57,7 @@ export default function AuthDispatch({ children }) {
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path='/messenger' element={<Messenger />} />
       </Routes>
     </UserProvider>
   );

@@ -1,0 +1,14 @@
+.message-list {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  width: 100%;
+  list-style-type: none;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.messages > li {
+
+}

@@ -1,98 +1,10 @@
-GET http://localhost:3001/user
+GET http://localhost:3001/user/689ba806a5d1648d55ae3a2e/friends/data
 
 ###
 
-POST http://localhost:3001/user
-Content-Type: application/json
-
-{
-  "email": "jackrmcclure@gmail.com",
-  "password": "password"
-}
-
-### 
-GET http://localhost:3001/jwt
+GET http://localhost:3001/user/689ba806a5d1648d55ae3a2e/friends/
 
 ###
 
-POST http://localhost:3001/jwt
-Content-Type: application/json
-
-{
-  "jti": "5a7e75f7-7519-48ff-b2dd-1b9b89ad14fa",
-  "user_id" : "6892a9134b1684e846802175"
-}
-
-###
-
-DELETE http://localhost:3001/jwt/revoke-jwt
-Content-Type: application/json
-
-{
-  "user_id": "689ba806a5d1648d55ae3a2e"
-}
-
-###
-
-POST http://localhost:3001/jwt/refresh
-Content-Type: application/json
-Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjg5YmE4MDZhNWQxNjQ4ZDU1YWUzYTJlIiwianRpIjoiYWZkNDY5N2ItYzVlOS00NjY3LThmNDgtMDUxODhlNGVmYjJiIiwiaWF0IjoxNzU1MzY2NDc2LCJleHAiOjE3NTU5NzEyNzZ9.NWImGQaR1yvF8SXNrheJwQbT_Tz5wYAfpacLlpxQqjs;
-
-{
-    "user_id": "689ba806a5d1648d55ae3a2e"
-}
-
-###
-
-POST http://localhost:3001/jwt
-Content-Type: application/json
-Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjg5YmE4MDZhNWQxNjQ4ZDU1YWUzYTJlIiwianRpIjoiM2MzMzAwNmEtY2M3ZS00ZmQyLWIxZGUtOWM4Yzk5YzQxZjE2IiwiaWF0IjoxNzU2MDY5NjcwLCJleHAiOjE3NTY2NzQ0NzB9.eTxnKi50NaiQ1t4IyLOPmvJnA9W3WR5lOLgDJlKgxbM;
-
-{
-  "jti": "f3c33006a-cc7e-4fd2-b1de-9c8c99c41f16"
-}
-
-###
-GET http://localhost:3001/message
-
-###
-
-POST http://localhost:3001/message/new
-Content-Type: application/json
-
-{
-  "sender": "6892a9134b1684e846802175",
-  "receiver": "689ba806a5d1648d55ae3a2e",
-  "content": "This is a test message."
-}
-
-###
-
-GET http://localhost:3001/message/68b3c99935084fe5905ceb78
-
-###
-
-GET http://localhost:3001/conversation
-
-###
-
-POST http://localhost:3001/conversation
-Content-Type: application/json
-
-{
-  "participants": ["6892a9134b1684e846802175", "689ba806a5d1648d55ae3a2e"]
-}
-
-###
-
-GET http://localhost:3001/conversation/68b3cef25c9fe921d4efe4ff
-
-###
-
-PATCH http://localhost:3001/conversation/new-message
-Content-Type: application/json
-
-{
-  "messageId": "68b3c99935084fe5905ceb78",
-  "participants": ["6892a9134b1684e846802175"]
-}
+GET http://localhost:3001/conversation/user/68ba3c33671f306fb9dd2263
+Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjg5YmE4MDZhNWQxNjQ4ZDU1YWUzYTJlIiwianRpIjoiMjAwNWFkNjEtZTZiZi00OGI3LTkwNjQtMmJiOThmZjcwNjgxIiwiaWF0IjoxNzU3ODYwNjAwLCJleHAiOjE3NTg0NjU0MDB9.07dkeQjKKzIRxEiSX7RMPGUNg-Yoi9BWyJbJHX8v-Xc;
