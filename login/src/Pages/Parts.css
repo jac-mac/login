@@ -1,0 +1,9 @@
+.parts {
+  width: 100vw;
+  height: 100vh;
+  color: lightgray;
+  background-color: #282c34;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

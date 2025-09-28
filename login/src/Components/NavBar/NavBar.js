@@ -7,7 +7,7 @@ export default function NavBar(props) {
     <nav className='navbar'>
       <ul>
         <li><a href='#'>About</a></li>
-        <li><a href='#'>Parts</a></li>
+        <li><Link to='http://localhost:3000/parts'>Parts</Link></li>
         <li><Link to='http://localhost:3000/messenger'>Messenger</Link></li>
         <li>
           <button name='logout' type='submit' onClick={props.handleLogout}>Logout</button>

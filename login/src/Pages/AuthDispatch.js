@@ -3,6 +3,7 @@ import Login from '../Pages/Login'
 import Dashboard from '../Pages/Dashboard'
 import Signup from '../Pages/Signup'
 import Messenger from './Messenger'
+import Parts from './Parts'
 import { UserProvider } from '../Contexts/UserContext'
 import { useNavigate, Routes, Route, useLocation } from 'react-router-dom'
 // import { useUserContext } from '../Contexts/UserContext'
@@ -58,6 +59,7 @@ export default function AuthDispatch({ children }) {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/signup" element={<Signup />} />
         <Route path='/messenger' element={<Messenger />} />
+        <Route path='/parts' element={<Parts />} />
       </Routes>
     </UserProvider>
   );
