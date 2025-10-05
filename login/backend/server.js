@@ -20,6 +20,7 @@ import {userRouter}         from './Routes/UserRoute.js'
 import {jwtsRouter}         from './Routes/JWTSRoute.js'
 import {messageRouter}      from './Routes/MessageRoute.js'
 import {conversationRouter} from './Routes/ConversationRoute.js'
+import {partRouter}         from './Routes/PartRoute.js'
 
 app.use(cors({
   origin: "http://localhost:3000",
@@ -31,6 +32,7 @@ app.use('/user', userRouter)
 app.use('/jwt', jwtsRouter)
 app.use('/message', messageRouter)
 app.use('/conversation', conversationRouter)
+app.use('/part', partRouter)
 
 const checkAuthAndRedirect = (req, res, next) => {
   // const refreshToken = req.cookies.refreshToken

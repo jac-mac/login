@@ -8,3 +8,25 @@ GET http://localhost:3001/user/689ba806a5d1648d55ae3a2e/friends/
 
 GET http://localhost:3001/conversation/user/68ba3c33671f306fb9dd2263
 Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjg5YmE4MDZhNWQxNjQ4ZDU1YWUzYTJlIiwianRpIjoiMjAwNWFkNjEtZTZiZi00OGI3LTkwNjQtMmJiOThmZjcwNjgxIiwiaWF0IjoxNzU3ODYwNjAwLCJleHAiOjE3NTg0NjU0MDB9.07dkeQjKKzIRxEiSX7RMPGUNg-Yoi9BWyJbJHX8v-Xc;
+
+###
+
+POST http://localhost:3001/part
+Content-Type: application/json
+
+{
+  "modelName": "iPhone 15",
+  "partName": "Screen"
+}
+
+###
+
+GET http://localhost:3001/part
+
+###
+
+GET http://localhost:3001/part/68dc86620defcfe13b5a23d9
+
+###
+
+DELETE http://localhost:3001/part/68dc86620defcfe13b5a23d9
